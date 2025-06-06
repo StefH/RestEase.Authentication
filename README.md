@@ -1,7 +1,7 @@
 ![Project Icon](icon.png) RestEase.Authentication
 ==================================
 
-An extension to [RestEase](https://github.com/canton7/RestEase) which Bearer, Basic and ApiKey authentication.
+An extension to [RestEase](https://github.com/canton7/RestEase) which supports Bearer, Basic and ApiKey authentication.
 
 ## Install
 [![NuGet Badge](https://img.shields.io/nuget/v/RestEase.Authentication)](https://www.nuget.org/packages/RestEase.Authentication)
