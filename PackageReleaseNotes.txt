@@ -1,0 +1,4 @@
+# 0.0.1 (07 June 2025)
+- #1 Initial code [enhancement]
+
+The full release notes can be found here: https://github.com/StefH/RestEase.Authentication/blob/main/ReleaseNotes.md

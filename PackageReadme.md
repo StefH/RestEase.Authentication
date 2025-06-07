@@ -1,22 +1,9 @@
-![Project Icon](icon.png) RestEase.Authentication
-==================================
-
+## RestEase.Authentication
 An extension to [RestEase](https://github.com/canton7/RestEase) which supports Bearer, Basic and ApiKey authentication.
 
-## Install
-[![NuGet Badge](https://img.shields.io/nuget/v/RestEase.Authentication)](https://www.nuget.org/packages/RestEase.Authentication)
+### Usage
 
-You can install from NuGet using the following command in the package manager window:
-
-`Install-Package RestEase.Authentication`
-
-Or via the Visual Studio NuGet package manager or if you use the `dotnet` command:
-
-`dotnet add package RestEase.Authentication`
-
-## Usage
-
-### Example appsettings.json for `Bearer`-Authentication
+#### Example appsettings.json for `Bearer`-Authentication
 ``` json
 {
     "DocumentApiClientOptions": {
@@ -28,7 +15,7 @@ Or via the Visual Studio NuGet package manager or if you use the `dotnet` comman
 }
 ```
 
-### Example appsettings.json for `Basic`-Authentication
+#### Example appsettings.json for `Basic`-Authentication
 ``` json
 {
     "DocumentApiClientOptions": {
@@ -41,7 +28,7 @@ Or via the Visual Studio NuGet package manager or if you use the `dotnet` comman
 }
 ```
 
-### Example appsettings.json for `Header`-Authentication
+#### Example appsettings.json for `Header`-Authentication
 ``` json
 {
     "DocumentApiClientOptions": {
@@ -54,7 +41,7 @@ Or via the Visual Studio NuGet package manager or if you use the `dotnet` comman
 }
 ```
 
-### Example C# register DI
+#### Example C# register DI
 
 ``` c#
 var section = configuration.GetSection("DocumentApiClientOptions");

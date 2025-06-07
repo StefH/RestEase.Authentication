@@ -17,16 +17,16 @@ static class Program
             .WriteTo.Console(theme: AnsiConsoleTheme.Code)
             .CreateLogger();
 
-        await using ServiceProvider serviceProvider = RegisterServices(args);
+        await using var serviceProvider = RegisterServices(args);
 
-        Worker worker = serviceProvider.GetRequiredService<Worker>();
+        var worker = serviceProvider.GetRequiredService<Worker>();
 
         await worker.RunAsync(CancellationToken.None);
     }
 
     private static ServiceProvider RegisterServices(string[] args)
     {
-        IConfiguration configuration = SetupConfiguration(args);
+        var configuration = SetupConfiguration(args);
         var services = new ServiceCollection();
 
         services.AddSingleton(configuration);
@@ -34,9 +34,7 @@ static class Program
         services.AddLogging(builder => builder.AddSerilog(logger: Log.Logger, dispose: true));
 
         services
-            .UseWithAuthenticatedRestEaseClient<IDocumentApi>(
-                configuration.GetSection("DocumentApiClientOptions"),
-                c => c.JsonSerializerSettings = new JsonSerializerSettings { Converters = new List<Newtonsoft.Json.JsonConverter> { new AnyOfJsonConverter() } });
+            .UseWithAuthenticatedRestEaseClient<IDocumentApi>(configuration.GetSection("DocumentApiClientOptions"), c => c.JsonSerializerSettings = new JsonSerializerSettings { Converters = new List<Newtonsoft.Json.JsonConverter> { new AnyOfJsonConverter() } });
 
         services.AddSingleton<Worker>();
 

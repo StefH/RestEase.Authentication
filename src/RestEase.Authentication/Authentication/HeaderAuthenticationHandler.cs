@@ -5,14 +5,23 @@ using Stef.Validation;
 
 namespace RestEase.Authentication.Authentication;
 
-public class HeaderAuthenticationHandler<T>(IOptions<AuthenticatedRestEaseOptions<T>> options) : IHttpRequestMessageHandler<T>
+public class HeaderAuthenticationHandler<T> : IHttpRequestMessageHandler<T>
     where T : class
 {
-    private readonly AuthenticatedRestEaseOptions<T> _options = Guard.NotNull(options.Value);
+    private readonly string _headerName;
+    private readonly string? _headerValue;
+
+    public HeaderAuthenticationHandler(IOptions<AuthenticatedRestEaseOptions<T>> options)
+    {
+        var optionsValue = Guard.NotNull(options.Value);
+
+        _headerName = Guard.NotNullOrEmpty(optionsValue.HeaderName);
+        _headerValue = optionsValue.Value;
+    }
 
     public Task AuthenticateHttpRequestMessage(HttpRequestMessage httpRequestMessage, CancellationToken cancellationToken = default)
     {
-        httpRequestMessage.Headers.Add(_options.HeaderName, _options.Value);
+        httpRequestMessage.Headers.Add(_headerName, _headerValue);
         return Task.CompletedTask;
     }
 }

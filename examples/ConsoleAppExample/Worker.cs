@@ -20,7 +20,7 @@ internal class Worker
 
     public async Task RunAsync(CancellationToken cancellationToken = default)
     {
-        var server = WireMockServer.Start("https://localhost:44318");
+        var server = WireMockServer.Start("https://localhost:44319");
 
         server
             .Given(
@@ -35,7 +35,8 @@ internal class Worker
                         id = 1234,
                         x = 42,
                         Title = "is 401",
-                        Description = "{{ request.headers.Authorization }}"
+                        Authorization = "{{ request.headers.Authorization }}",
+                        HeaderValue = "{{ request.headers.X-API-KEY }}"
                     })
                     .WithTransformer()
             );
@@ -53,7 +54,8 @@ internal class Worker
                         id = 1234,
                         x = 42,
                         Title = "is 200",
-                        Description = "{{ request.headers.Authorization }}"
+                        Authorization = "{{ request.headers.Authorization }}",
+                        HeaderValue = "{{ request.headers.X-API-KEY }}"
                     })
                     .WithTransformer()
             );
