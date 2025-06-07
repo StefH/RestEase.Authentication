@@ -48,3 +48,6 @@ var section = configuration.GetSection("DocumentApiClientOptions");
 
 services.UseWithAuthenticatedRestEaseClient<IDocumentApi>(section);
 ```
+
+### 🌐 Links
+- See also: [RestEase.Authentication.Azure](https://github.com/StefH/RestEase.Authentication.Azure)
