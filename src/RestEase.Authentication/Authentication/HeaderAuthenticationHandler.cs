@@ -16,7 +16,7 @@ public class HeaderAuthenticationHandler<T> : IHttpRequestMessageHandler<T>
         var optionsValue = Guard.NotNull(options.Value);
 
         _headerName = Guard.NotNullOrEmpty(optionsValue.HeaderName);
-        _headerValue = optionsValue.Value;
+        _headerValue = optionsValue.HeaderValue;
     }
 
     public Task AuthenticateHttpRequestMessage(HttpRequestMessage httpRequestMessage, CancellationToken cancellationToken = default)
