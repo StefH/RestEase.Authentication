@@ -34,7 +34,14 @@ static class Program
         services.AddLogging(builder => builder.AddSerilog(logger: Log.Logger, dispose: true));
 
         services
-            .UseWithAuthenticatedRestEaseClient<IDocumentApi>(configuration.GetSection("DocumentApiClientOptions"), c => c.JsonSerializerSettings = new JsonSerializerSettings { Converters = new List<Newtonsoft.Json.JsonConverter> { new AnyOfJsonConverter() } });
+            .UseWithAuthenticatedRestEaseClient<IDocumentApi>(configuration.GetSection("DocumentApiClientOptions"),
+                c => c.JsonSerializerSettings = new JsonSerializerSettings
+                {
+                    Converters = new List<Newtonsoft.Json.JsonConverter>
+                    {
+                        new AnyOfJsonConverter()
+                    }
+                });
 
         services.AddSingleton<Worker>();
 

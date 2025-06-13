@@ -14,7 +14,7 @@ public class AuthenticatedRestEaseOptions<T> where T : class
     /// <summary>
     /// Gets or sets the value to use for Bearer or Header.
     /// </summary>
-    public string? Value { get; set; }
+    public string? HeaderValue { get; set; }
 
     /// <summary>
     /// Gets or sets the value to use for the Header-name.
