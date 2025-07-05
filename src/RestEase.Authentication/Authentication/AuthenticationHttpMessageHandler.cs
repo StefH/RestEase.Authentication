@@ -7,7 +7,7 @@ internal class AuthenticationHttpMessageHandler<T>(IHttpRequestMessageHandler<T>
 {
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-        await httpRequestMessageHandler.AuthenticateHttpRequestMessage(request, cancellationToken).ConfigureAwait(false);
+        await httpRequestMessageHandler.AuthenticateHttpRequestMessageAsync(request, cancellationToken).ConfigureAwait(false);
 
         return await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
     }

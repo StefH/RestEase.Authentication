@@ -12,7 +12,7 @@ public class BearerAuthenticationHandler<T>(IOptions<AuthenticatedRestEaseOption
     private const string Scheme = "Bearer";
     private readonly string _headerValue = Guard.NotNull(options.Value).HeaderValue!;
 
-    public Task AuthenticateHttpRequestMessage(HttpRequestMessage httpRequestMessage, CancellationToken cancellationToken = default)
+    public Task AuthenticateHttpRequestMessageAsync(HttpRequestMessage httpRequestMessage, CancellationToken cancellationToken = default)
     {
         httpRequestMessage.Headers.Authorization = new AuthenticationHeaderValue(Scheme, _headerValue);
         return Task.CompletedTask;

@@ -12,7 +12,7 @@ public class BasicAuthenticationHandler<T>(IOptions<AuthenticatedRestEaseOptions
     private const string Scheme = "Basic";
     private readonly Lazy<string> _basicAuthentication = new(() => Convert.ToBase64String(Encoding.ASCII.GetBytes($"{options.Value.Username}:{options.Value.Password}")));
 
-    public Task AuthenticateHttpRequestMessage(HttpRequestMessage httpRequestMessage, CancellationToken cancellationToken = default)
+    public Task AuthenticateHttpRequestMessageAsync(HttpRequestMessage httpRequestMessage, CancellationToken cancellationToken = default)
     {
         httpRequestMessage.Headers.Authorization = new AuthenticationHeaderValue(Scheme, _basicAuthentication.Value);
         return Task.CompletedTask;

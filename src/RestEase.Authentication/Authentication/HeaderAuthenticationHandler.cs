@@ -19,7 +19,7 @@ public class HeaderAuthenticationHandler<T> : IHttpRequestMessageHandler<T>
         _headerValue = optionsValue.HeaderValue;
     }
 
-    public Task AuthenticateHttpRequestMessage(HttpRequestMessage httpRequestMessage, CancellationToken cancellationToken = default)
+    public Task AuthenticateHttpRequestMessageAsync(HttpRequestMessage httpRequestMessage, CancellationToken cancellationToken = default)
     {
         httpRequestMessage.Headers.Add(_headerName, _headerValue);
         return Task.CompletedTask;
